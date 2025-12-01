@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import clsx from 'clsx';
+import { Search as SearchIcon } from 'lucide-react';
 import classes from './styles/search.module.css';
 
 export default class Search extends Component {
@@ -33,7 +34,7 @@ export default class Search extends Component {
         <div className={clsx('col', 's12', classes.searchContainer)}>
           <div className={classes.searchBox}>
             <div className={clsx('input-field', classes.inputField)}>
-              <i className="material-icons prefix">search</i>
+              <SearchIcon className={classes.searchIconPrefix} size={24} />
               <input
                 id="search_input"
                 placeholder="Search for movies, series..."
@@ -47,7 +48,7 @@ export default class Search extends Component {
                 className={clsx('btn', 'waves-effect', 'waves-light', classes.searchBtn)}
                 onClick={this.handleBtn}
               >
-                <i className="material-icons">search</i>
+                <SearchIcon size={20} />
               </button>
             </div>
           </div>

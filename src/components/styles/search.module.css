@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-inline: 0 !important;
 }
 
 .searchBox {
@@ -23,18 +24,17 @@
   align-items: center;
 }
 
-.inputField .prefix {
+.searchIconPrefix {
   position: absolute;
-  left: 0.5rem;
+  left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
   color: #9e9e9e;
-  font-size: 24px;
+  pointer-events: none;
 }
 
 .searchInput {
   padding-left: 3rem !important;
-  /* padding-right: 120px !important; */
   font-size: 16px !important;
   border: none !important;
   box-shadow: none !important;
@@ -58,12 +58,8 @@
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-}
-
-.searchBtn i {
-  margin: 0;
-  font-size: 20px;
 }
 
 .filterContainer {
@@ -147,9 +143,5 @@
 
   .searchBtn {
     padding: 0 0.75rem;
-  }
-
-  .searchBtn span {
-    display: none;
   }
 }
