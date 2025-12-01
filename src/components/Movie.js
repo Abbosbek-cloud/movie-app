@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
+import { ImageOff } from 'lucide-react';
 import classes from './styles/movie.module.css';
 
 export default function Movie(props) {
@@ -60,9 +61,7 @@ export default function Movie(props) {
         ) : (
           <div className={classes.noImageWrapper}>
             <div className={classes.noImageContent}>
-              <i className="material-icons" style={{ fontSize: '48px' }}>
-                image_not_supported
-              </i>
+              <ImageOff size={48} strokeWidth={1.5} className={classes.noImageIcon} />
               <p className={classes.noImageText}>No Image Available</p>
             </div>
           </div>
