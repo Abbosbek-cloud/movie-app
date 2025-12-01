@@ -1,42 +1,90 @@
-import { Component } from "react";
-import Loader from "../components/Loader";
-import Movies from "../components/Movies";
-import Search from "../components/Search";
+import { Component } from 'react';
+import Loader from '../components/Loader';
+import Movies from '../components/Movies';
+import Search from '../components/Search';
+
+const API_KEY = '3a772030';
+const API_URL = 'https://www.omdbapi.com';
 
 export default class Main extends Component {
   state = {
     movies: [],
     loading: true,
+    error: null,
   };
 
   componentDidMount() {
-    fetch("https://www.omdbapi.com/?apikey=3a772030&s=panda")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({ movies: data.Search, loading: false });
-        // console.log(this.state.movies);
-      });
+    this.searchMovie('panda');
   }
 
-  searchMovie = (name, type = "all") => {
-    this.setState({ loading: true });
-    fetch(
-      `https://www.omdbapi.com/?apikey=3a772030&s=${name}${
-        type !== "all" ? `&type=${type}` : ""
-      }`
-    )
-      .then((res) => res.json())
+  searchMovie = (search = '', type = 'all') => {
+    // Validate search input
+    if (!search.trim()) {
+      return;
+    }
+
+    this.setState({ loading: true, error: null });
+
+    const params = {
+      apikey: API_KEY,
+      s: search.trim(),
+    };
+
+    // Only add type if not 'all'
+    if (type !== 'all') {
+      params.type = type;
+    }
+
+    const url = `${API_URL}?${new URLSearchParams(params)}`;
+
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
       .then((data) => {
-        this.setState({ movies: data.Search, loading: false });
+        if (data.Response === 'True') {
+          this.setState({
+            movies: data.Search,
+            loading: false,
+            error: null,
+          });
+        } else {
+          this.setState({
+            movies: [],
+            loading: false,
+            error: data.Error || 'No movies found',
+          });
+        }
+      })
+      .catch((error) => {
+        console.error('Search error:', error);
+        this.setState({
+          movies: [],
+          loading: false,
+          error: 'Failed to fetch movies. Please try again.',
+        });
       });
   };
 
   render() {
-    const s = this.state;
+    const { movies, loading, error } = this.state;
+
     return (
       <div className="container content">
         <Search searchMovie={this.searchMovie} />
-        {this.state.loading ? <Loader /> : <Movies movies={s.movies} />}
+
+        {loading && <Loader />}
+
+        {!loading && error && (
+          <div className="center-align" style={{ marginTop: '2rem' }}>
+            <p style={{ fontSize: '18px', color: '#666' }}>{error}</p>
+          </div>
+        )}
+
+        {!loading && !error && movies && <Movies movies={movies} />}
       </div>
     );
   }
