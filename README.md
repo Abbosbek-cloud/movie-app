@@ -21,7 +21,7 @@ A modern, responsive movie search application built with React that allows users
 
 ## 🚀 Demo
 
-[Live Demo](https://movie-app-gilt-pi.vercel.app/) 
+[Live Demo](https://movie-app-gilt-pi.vercel.app/)
 
 ## 🛠️ Technologies Used
 
@@ -35,6 +35,7 @@ A modern, responsive movie search application built with React that allows users
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - Node.js (v14.0.0 or higher)
 - npm or yarn
 - Git
@@ -42,12 +43,14 @@ Before you begin, ensure you have the following installed:
 ## 🔧 Installation
 
 1. **Clone the repository**
+
    ```bash
-   git clone https://github.com/abbosbek-cloud/movie-app.git
+   git clone https://github.com/abbosbek-sulaymonov/movie-app.git
    cd movie-app
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -62,11 +65,13 @@ Before you begin, ensure you have the following installed:
 4. **Configure API key**
    - Open `src/pages/Main.jsx`
    - Replace the API_KEY constant with your key:
+
    ```javascript
    const API_KEY = 'your_api_key_here';
    ```
 
 5. **Start the development server**
+
    ```bash
    npm start
    # or
@@ -110,27 +115,35 @@ movie-app/
 ## 🎯 Core Components
 
 ### Main Component
+
 The main container that handles:
+
 - API requests to OMDb
 - Search functionality
 - Loading states
 - Error handling
 
 ### Search Component
+
 Provides:
+
 - Search input with Enter key support
 - Filter options (All, Movies, Series)
 - Responsive design
 
 ### Movie Component
+
 Features:
+
 - Image lazy loading with shimmer effect
 - Telegram-style image preview (blurred background)
 - Fallback for missing images
 - Text truncation with tooltips
 
 ### Loader Component
+
 Displays:
+
 - Skeleton loading cards
 - Grid layout matching actual content
 - Shimmer animation effect
@@ -144,13 +157,12 @@ The project uses a hybrid styling approach:
 3. **clsx** - Dynamic className composition
 
 ### Example Usage
+
 ```javascript
 import clsx from 'clsx';
 import classes from './styles/component.module.css';
 
-<div className={clsx('materialize-class', classes.customClass)}>
-  Content
-</div>
+<div className={clsx('materialize-class', classes.customClass)}>Content</div>;
 ```
 
 ## 🔌 API Integration
@@ -160,16 +172,19 @@ import classes from './styles/component.module.css';
 **Base URL:** `https://www.omdbapi.com`
 
 **Parameters:**
+
 - `apikey` - Your API key (required)
 - `s` - Search query (required)
 - `type` - Filter by type: movie, series, episode (optional)
 
 **Example Request:**
+
 ```javascript
 https://www.omdbapi.com/?apikey=YOUR_KEY&s=inception&type=movie
 ```
 
 **Response Structure:**
+
 ```json
 {
   "Search": [
@@ -189,7 +204,9 @@ https://www.omdbapi.com/?apikey=YOUR_KEY&s=inception&type=movie
 ## 🎭 Key Features Implementation
 
 ### 1. Image Lazy Loading
+
 Uses the `Image` constructor for preloading:
+
 ```javascript
 const img = new Image();
 img.onload = () => setImageLoaded(true);
@@ -198,6 +215,7 @@ img.src = posterUrl;
 ```
 
 ### 2. Telegram-Style Image Preview
+
 ```css
 .blurredBackground {
   filter: blur(20px);
@@ -212,6 +230,7 @@ img.src = posterUrl;
 ```
 
 ### 3. Sticky Transparent Header
+
 ```css
 nav {
   position: sticky;
@@ -230,6 +249,7 @@ The app is fully responsive with breakpoints:
 - **Desktop**: > 768px
 
 Key responsive features:
+
 - Flexible grid layout
 - Collapsible filters
 - Optimized touch targets
@@ -250,6 +270,7 @@ This creates an optimized production build in the `build/` folder.
 ### Deploy to Vercel
 
 1. Install Vercel CLI:
+
    ```bash
    npm i -g vercel
    ```
@@ -262,6 +283,7 @@ This creates an optimized production build in the `build/` folder.
 ### Deploy to Netlify
 
 1. Build the project:
+
    ```bash
    npm run build
    ```
@@ -271,14 +293,16 @@ This creates an optimized production build in the `build/` folder.
 ### Deploy to GitHub Pages
 
 1. Install gh-pages:
+
    ```bash
    npm install --save-dev gh-pages
    ```
 
 2. Add to `package.json`:
+
    ```json
    {
-     "homepage": "https://abbosbek-cloud.github.io/movie-app",
+     "homepage": "https://abbosbek-sulaymonov.github.io/movie-app",
      "scripts": {
        "predeploy": "npm run build",
        "deploy": "gh-pages -d build"
@@ -294,6 +318,7 @@ This creates an optimized production build in the `build/` folder.
 ## 🧪 Testing
 
 ### Run Tests
+
 ```bash
 npm test
 # or
@@ -301,6 +326,7 @@ yarn test
 ```
 
 ### Test Coverage
+
 ```bash
 npm test -- --coverage
 ```
@@ -350,6 +376,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Abbosbek**
+
 - Full-stack Developer
 - 4+ years of experience
 - Specializes in React, Next.js, TypeScript, Node.js
@@ -365,9 +392,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you have any questions or need help, please:
+
 - Open an issue on GitHub
 - Contact via email: [abek01sulaymonov@example.com]
-- Visit the [documentation](https://github.com/Abbosbek-cloud/movie-app/blob/main/README.md)
+- Visit the [documentation](https://github.com/abbosbek-sulaymonov/movie-app/blob/main/README.md)
 
 ## ⭐ Show Your Support
 
